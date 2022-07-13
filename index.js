@@ -1,7 +1,7 @@
 const fs = require('fs'); 
 const inquirer = require('inquirer');
 
-const tempalte = require('./src/template');
+const template = require('./src/template');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -159,7 +159,55 @@ function newEmployee(){
             message: 'Would you like to add more team members?',
             default: false
         }
-    ]);
+    ])
+    .then(employeeData => {
+        // data for employee types 
 
-    // then 
+        let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
+        let employee; 
+
+        if (role === "Engineer") {
+            employee = new Engineer (name, id, email, github);
+
+            console.log(employee);
+
+        } else if (role === "Intern") {
+            employee = new Intern (name, id, email, school);
+
+            console.log(employee);
+        }
+
+        teamArr.push(employee); 
+
+        if (confirmAddEmployee) {
+            return addEmployee(teamArr); 
+        } else {
+            return teamArr;
+        }
+    })
+
 }
+
+// function to generate HTML page file using file system 
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Your team profile has been successfully created! Please check out index.html")
+        }
+    })
+}; 
+
+newManager()
+  .then(newEmployee)
+  .then(teamArr => {
+    return template(teamArr);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .catch(err => {
+ console.log(err);
+  });
