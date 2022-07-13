@@ -70,5 +70,17 @@ function newManager(){
         }
     ])
 
-    // .then next
+    .then(managerInput => {
+        const  { name, id, email, officeNumber } = managerInput; 
+        const manager = new Manager (name, id, email, officeNumber);
+
+        teamArr.push(manager); 
+        console.log(manager); 
+    })
+};
+
+function newEmployee(){
+    return inquirer.prompt([
+        
+    ])
 }
