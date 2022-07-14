@@ -180,7 +180,7 @@ function newEmployee(){
         teamArr.push(employee); 
 
         if (confirmAddEmployee) {
-            return addEmployee(teamArr); 
+            return newEmployee(teamArr); 
         } else {
             return teamArr;
         }
