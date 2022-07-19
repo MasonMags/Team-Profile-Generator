@@ -1,45 +1,48 @@
 function managerTemplate(manager) {
     return `
-    <div>
-        <h3> Name: ${manager.name} <h3>
-        <h4> Manager <h4>
-    <div>
-
-    <div>
-        <p> ID : ${manager.id} <p>
-        <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
-        <p class="office">Office Number: ${manager.officeNumber}</p>
-    <div>
+    <section>
+        <div class="card">
+            <div class="container">
+                <h3> ${manager.name} <h3>
+                <h4> Manager <h4>
+                <p> ID : ${manager.id} <p>
+                <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
+                <p class="office">Office Number: ${manager.officeNumber}</p>
+            <div>
+        <div>
+    </section>
     `
 }
 
 function engineerTemplate(engineer) {
     return `
-    <div>
-        <h3> Name: ${engineer.name} <h3>
-        <h4> Engineer <h4>
-    <div>
-
-    <div>
-        <p> ID : ${engineer.id} <p>
-        <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-        <p class="office">Github: <a href="https://github.com/${engineer.github}" </p>
-    <div>
+    <section>
+        <div class="card">
+            <div class="container">
+                <h3> ${engineer.name} <h3>
+                <h4> Engineer <h4>
+                <p> ID : ${engineer.id} <p>
+                <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
+                <p class="office">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+            <div>
+        <div>
+    </section>
     `
 }
 
 function internTemplate(intern) {
     return `
-    <div>
-        <h3> Name: ${intern.name} <h3>
-        <h4> Intern <h4>
-    <div>
-
-    <div>
-        <p> ID : ${intern.id} <p>
-        <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
-        <p class="school">School: ${intern.school} </p>
-    <div>
+    <section>
+        <div class="card">
+            <div class="container">
+                <h3> Name: ${intern.name} <h3>
+                <h4> Intern <h4>
+                <p> ID : ${intern.id} <p>
+                <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
+                <p class="school">School: ${intern.school} </p>
+            <div>
+        <div>
+    </section>
     `
 }
 
@@ -92,21 +95,18 @@ const generateTeamPage = function (employeeCards) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Team Profile</title>
+        <title>Team Profile</title> 
+        <link rel="stylesheet" href="style.css"> 
     </head>
     <body>
         <header>
-            <nav class="navbar" id="navbar">
-                <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+            <nav>
+                <span class="header">THE TEAM</span>
             </nav>
         </header>
         <main>
-            <div class="container">
-                <div class="row justify-content-center" id="team-cards">
                     <!--Team Cards-->
                     ${employeeCards}
-                </div>
-            </div>
         </main>
         
     </body>
