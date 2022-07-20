@@ -35,7 +35,7 @@ function internTemplate(intern) {
     <section>
         <div class="card">
             <div class="container">
-                <h3> Name: ${intern.name} <h3>
+                <h3> ${intern.name} <h3>
                 <h4> Intern <h4>
                 <p> ID : ${intern.id} <p>
                 <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
